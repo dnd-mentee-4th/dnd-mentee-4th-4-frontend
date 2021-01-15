@@ -1,4 +1,5 @@
 const plugin = require('tailwindcss/plugin');
+
 const spacing = [...Array(301).keys()].reduce(
   (res, key) => ({ ...res, [key]: `${key}px` }),
   {},

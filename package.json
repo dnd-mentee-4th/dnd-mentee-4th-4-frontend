@@ -1,17 +1,14 @@
 {
-  "name": "cra",
+  "name": "dnd-4th-4-frontend",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@emotion/core": "^11.0.0",
     "@emotion/styled": "^11.0.0",
-    "@testing-library/jest-dom": "^5.11.4",
-    "@testing-library/react": "^11.1.0",
-    "@testing-library/user-event": "^12.1.10",
     "eslint-config": "^0.3.0",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-config-prettier": "^7.1.0",
     "eslint-plugin-prettier": "^3.3.1",
-    "node-sass": "^5.0.0",
     "prettier": "^2.2.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
@@ -19,7 +16,8 @@
     "react-scripts": "4.0.1",
     "tailwindcss": "^2.0.2",
     "tailwindcss-gradients": "^3.0.0",
-    "tailwindcss-pseudo-elements": "^1.5.1"
+    "tailwindcss-pseudo-elements": "^1.5.1",
+    "twin.macro": "^2.0.8"
   },
   "scripts": {
     "start": "react-scripts start",
