@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
-import Home from './containers/home';
+import Home from 'containers/home';
 
 const App = () => (
   <BrowserRouter basename="/">

@@ -1,7 +1,7 @@
 import React from 'react';
-import logo from '../../assets/icons/logo.svg';
+import logo from 'assets/icons/logo.svg';
 
-import './Home.css';
+import 'Home.css';
 
 const Home = () => (
   <div className="Home">
