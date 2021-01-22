@@ -19,8 +19,8 @@
 Front-End, Back-End 모두 JS 사용으로 컨벤션 통일
 
 #### 사용 Tool
-[ESLint](https://eslint.org/) : JavaScript 코드에서 발견 된 문제을 식별하는 정적 코드 분석 도구인 <br/>
-[Prettier](https://prettier.io/): 코드 포멧터 (작성한 코드를 정해진 코딩 스타일로 변환해주는 도구)
+* [ESLint](https://eslint.org/) : JavaScript 코드에서 발견 된 문제을 식별하는 정적 코드 분석 도구인 <br/>
+* [Prettier](https://prettier.io/): 코드 포멧터 (작성한 코드를 정해진 코딩 스타일로 변환해주는 도구)
 
 ESLint extend [airbnb, prettier] 사용 (추후 개발자간의 합의 후 불필요한 Rule 제거)<br/>
 [Prettier 세부 설정](https://github.com/dnd-mentee-4th/dnd-mentee-4th-4-frontend/blob/master/.prettierrc)
@@ -28,7 +28,7 @@ ESLint extend [airbnb, prettier] 사용 (추후 개발자간의 합의 후 불�
 ### Branch 관리
 - 개발자가 개별적으로 fork한 후 개발 진행
 
-###  Branch 명
+####  Branch 명
 - master : 제품으로 출시될 수 있는 브랜치
 - develop : 다음 출시 버전을 개발하는 브랜치
 - feature : 기능을 개발하는 브랜치
