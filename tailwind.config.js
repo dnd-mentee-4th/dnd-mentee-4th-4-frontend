@@ -1,8 +1,7 @@
+const plugin = require('tailwindcss/plugin');
+
 module.exports = {
-  purge: [
-    './src/**/*.js',
-    './src/**/*.jsx',
-  ],
+  purge: ['./src/**/*.js', './src/**/*.jsx'],
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {},
@@ -10,5 +9,30 @@ module.exports = {
   variants: {
     extend: {},
   },
-  plugins: [],
-}
+  plugins: [
+    require('tailwindcss-gradients'),
+    require('tailwindcss-pseudo-elements'),
+    plugin(({ addUtilities }) => {
+      const newUtilities = {
+        '.clickable': {
+          position: 'relative',
+          cursor: 'pointer',
+          'user-select': 'none',
+
+          ':active:after': {
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            background: 'rgba(0, 0, 0, 0.08)',
+            content: '""',
+            borderColor: '#000',
+          },
+        },
+      };
+
+      addUtilities(newUtilities, ['before', 'after']);
+    }),
+  ],
+};
