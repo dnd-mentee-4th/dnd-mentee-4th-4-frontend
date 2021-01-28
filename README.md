@@ -1,9 +1,9 @@
 # 이것좀 사줘
 
 ## 🔗 링크
-노션 | 프론트엔드 저장소 |
+노션 | 백엔드 저장소 |
 :---: | :---: 
-[링크](https://www.notion.so/DnD-4-1445a1f48ca34d17bf55beccf8263149) | [링크](https://github.com/dnd-mentee-4th/dnd-mentee-4th-4-frontend)
+[링크](https://www.notion.so/DnD-4-1445a1f48ca34d17bf55beccf8263149) | [링크](https://github.com/dnd-mentee-4th/dnd-mentee-4th-4-backend)
 ## 💁 팀원
 
 ### Design
