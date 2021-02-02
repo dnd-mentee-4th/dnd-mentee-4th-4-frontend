@@ -4,6 +4,7 @@ import tw from 'twin.macro';
 
 import { LOGO, CATEGORY, TOOL, SUB_CATEGORY } from '../../constants/menu';
 
+
 const slideDown = keyframes`
   from { height: 0; }
   to { height: auto } // 265px
@@ -52,6 +53,7 @@ const SubCategory = styled.div(
 
 const Header = () => {
   const [openSubCategory, setOpenSubCategory] = useState(false);
+
   const toggleSubPane = () => {
     setOpenSubCategory((prev) => !prev);
   };
