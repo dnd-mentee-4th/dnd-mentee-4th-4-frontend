@@ -1,16 +1,25 @@
+/* eslint-disable no-console */
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
+// import { ThemeProvider } from 'styled-components';
+import { GlobalStyles } from './style';
+
+import { ColorProvider } from './context/ColorContext';
 import Intro from './components/Intro';
-import Main from './containers/main';
+import Base from './components/Layout';
 
 const App = () => (
-  <BrowserRouter basename="/">
-    <Switch>
-      <Route path="/" component={Intro} exact />
-      <Route path="/main" component={Main} exact />
-    </Switch>
-  </BrowserRouter>
+  <ColorProvider>
+    <GlobalStyles />
+    <Base>
+      <BrowserRouter basename="/">
+        <Switch>
+          <Route path="/intro" component={Intro} />
+        </Switch>
+      </BrowserRouter>
+    </Base>
+  </ColorProvider>
 );
 
 export default App;
