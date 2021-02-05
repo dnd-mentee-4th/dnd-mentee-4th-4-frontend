@@ -7,6 +7,7 @@ import { GlobalStyles } from './style';
 import { ColorProvider } from './context/ColorContext';
 import Intro from './components/Intro';
 import Base from './components/Layout';
+import LoginModal from './components/LoginModal';
 
 const AppProvider = ({ contexts, children }) =>
   contexts.reduce(
@@ -20,13 +21,13 @@ const AppProvider = ({ contexts, children }) =>
 const App = () => (
   <AppProvider contexts={[ColorProvider]}>
     <GlobalStyles />
-    <Base>
-      <BrowserRouter basename="/">
-        <Switch>
-          <Route path="/intro" component={Intro} />
-        </Switch>
-      </BrowserRouter>
-    </Base>
+    <BrowserRouter basename="/">
+      <Switch>
+        <Route path="/" component={Base} exact />
+        <Route path="/intro" component={Intro} exact />
+        <Route path="/modal" component={LoginModal} exact />
+      </Switch>
+    </BrowserRouter>
   </AppProvider>
 );
 

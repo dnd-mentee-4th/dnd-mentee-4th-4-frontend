@@ -28,9 +28,9 @@ const BannerImage = styled.img(
 );
 const Banner = () => (
   <BannerContainer>
-    <Carousel autoPlay infiniteLoop stopOnHover>
-      {tempImageSrc.map((imageSrc) => (
-        <BannerImage src={imageSrc} />
+    <Carousel autoPlay infiniteLoop stopOnHover showThumbs={false}>
+      {tempImageSrc.map((imageSrc, index) => (
+        <BannerImage key={index} src={imageSrc} />
       ))}
     </Carousel>
   </BannerContainer>
