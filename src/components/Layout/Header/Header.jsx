@@ -17,7 +17,8 @@ const HeaderContainer = styled.div(
   `,
 );
 
-const ImageContainer = styled.img(tw`items-center clickable w-5 h-5`, css``);
+const ImageContainer = styled.img(tw`items-center clickable w-5 h-5`);
+const LogoContainer = styled.img(tw`items-center clickable w-8 h-8`);
 
 const ToolImageContainer = styled(ImageContainer)(tw`px-5`);
 const ToolBar = styled.div(tw`flex items-center justify-end`);
@@ -37,7 +38,7 @@ const Header = () => {
   return (
     <HeaderWrapper>
       <HeaderContainer>
-        <ImageContainer src={Logo} />
+        <LogoContainer src={Logo} />
         <ToolBar>
           {Object.entries(HeaderTools).map(([key, value]) => {
             if (key === 'Search')
