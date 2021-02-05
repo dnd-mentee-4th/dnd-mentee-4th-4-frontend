@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styled, { css } from 'styled-components';
 import tw from 'twin.macro';
 
@@ -70,6 +71,7 @@ function Intro() {
     textAlign: 'right',
     marginRight: '5%',
     marginTop: '7px',
+    textDecoration: 'none',
   };
   const login = {
     flex: '1',
@@ -80,7 +82,7 @@ function Intro() {
     height: '35px',
     border: 'none',
     borderRadius: '15px',
-    cursor: 'pointer',
+    cursor: 'pointer ',
     backgroundColor: '#06FFD2',
     outline: 'none',
   };
@@ -99,12 +101,19 @@ function Intro() {
           </div>
           <div className="subBtn" style={subBtn}>
             <div className="home" style={home}>
-              둘러보기
+              <Link
+                to="/main"
+                style={{ color: 'inherit', textDecoration: 'inherit' }}
+              >
+                둘러보기
+              </Link>
             </div>
             <div style={login}>
-              <button type="button" style={loginbtn}>
-                로그인
-              </button>
+              <Link to="/modal">
+                <button type="button" style={loginbtn}>
+                  로그인
+                </button>
+              </Link>
             </div>
           </div>
         </div>
