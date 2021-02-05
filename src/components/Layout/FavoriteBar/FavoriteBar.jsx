@@ -4,7 +4,7 @@ import tw from 'twin.macro';
 
 const FAVORITEHEADER = 'FAVORITE';
 const FavoriteBarContainer = styled.div(
-  tw`float-right w-1/4 h-screen pt-10 z-10 border-solid border-l text-center`,
+  tw`hidden md:(block float-right w-1/4 h-screen pt-10 z-10 border-solid border-l text-center)`,
   css`border-color: ${(props) => props.theme.vertical_border};`
 );
 
