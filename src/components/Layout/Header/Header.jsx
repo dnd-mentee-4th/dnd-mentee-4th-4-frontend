@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import React, { useContext } from 'react';
 import styled, { css } from 'styled-components';
 import tw from 'twin.macro';
@@ -6,11 +5,12 @@ import tw from 'twin.macro';
 import ColorContext from '../../../context/ColorContext';
 
 import { Logo, HeaderTools } from '../../../constants/headerItem';
+import MobileToggle from './MobileToggle';
 
 const HeaderWrapper = styled.div(tw`block fixed w-full z-50`);
 
 const HeaderContainer = styled.div(
-  tw`flex items-center pt-40 text-white md:(justify-between) justify-end`,
+  tw`flex items-center text-white md:(justify-between) justify-end`,
   css`
     background-color: #303030;
     height: 50px;
@@ -45,6 +45,8 @@ const Header = () => {
 
   return (
     <HeaderWrapper>
+      <MobileToggle />
+
       <HeaderContainer>
         <LogoContainer src={Logo} />
         <ToolBar>
