@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled, { css } from 'styled-components';
 import tw from 'twin.macro';
-
+import LoginTools from '../../constants/loginItem';
 // const fadeIn = keyframes`
 //   from {
 //     opacity: 0
@@ -28,13 +28,25 @@ const ModalBackground = styled.div(
   `,
 );
 
-const Clickbtn = styled.button``;
+const Clickbtn = styled.img(
+  css`
+    width: 5%;
+    height: 5%;
+    float: right;
+    cursor: pointer;
+  `,
+  tw`
+  z-40
+  pt-6
+  pr-6
+  `,
+);
 
 const ModalContent = styled.div(
   tw`
     
     relative
-    my-0
+    mt-32
     mx-auto
     bg-white
     z-30
@@ -47,7 +59,7 @@ const ModalContent = styled.div(
   `,
   css`
     display: ${(props) => (props.display ? 'block' : 'none')};
-    top: 20%;
+
     width: 30%;
     height: 400px;
   `,
@@ -60,21 +72,21 @@ function LoginModal() {
   };
   const loginText = {
     textAlign: 'center',
-    paddingTop: '10%',
+    paddingTop: '15%',
+    color: 'black',
   };
 
   return (
     <>
       <div>홈화면</div>
 
-      <ModalBackground display={display} onClick={LoginModalHandler}>
-        <ModalContent display={display}>
-          <Clickbtn onClick={LoginModalHandler}>닫기</Clickbtn>
-          <div className="login-text" style={loginText}>
-            로그인
-          </div>
-        </ModalContent>
-      </ModalBackground>
+      <ModalBackground display={display} onClick={LoginModalHandler} />
+      <ModalContent display={display}>
+        <Clickbtn onClick={LoginModalHandler} src={LoginTools.delete} />
+        <div className="login-text" style={loginText}>
+          로그인
+        </div>
+      </ModalContent>
     </>
   );
 }
