@@ -1,7 +1,18 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import styled, { css } from 'styled-components';
 import tw from 'twin.macro';
+import { Link } from 'react-router-dom';
+// const CardLoop = keyframes`
+// from {
+//   transform: translate(0%);
+
+// }
+
+// to {
+
+//   transform: translate(-100%);
+// }
+// `;
 
 const CardWrapper = styled.div(
   tw`w-full`,
@@ -41,15 +52,70 @@ const IntroPage = styled.div(
     color: white;
   `,
 );
+const Intromessage = styled.div(
+  css`
+    font-size: large;
+    font-weight: bold;
+    margin-top: 50%;
+    margin-bottom: 5%;
+    text-align: center;
+    line-height: 150%;
+  `,
+  tw`
+  sm:text-3xl
+  
+  md:mt-80
+  lg:mt-48
+  lg:text-5xl
+  lg:leading-normal
+  
+`,
+);
+
+const Submessage = styled.div(
+  css`
+    text-align: center;
+    font-size: smaller;
+    margin: 0 8%;
+    line-height: 150%;
+  `,
+
+  tw`
+  sm:text-lg
+  md:mx-9
+  lg:text-2xl
+ 
+  
+`,
+);
+
+const LoginButton = styled.button(
+  css`
+    width: 40%;
+    height: 30px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    background-color: #06ffd2;
+    outline: none;
+  `,
+  tw`
+  sm:w-28
+  sm:h-10
+  sm:text-lg
+  `,
+);
+
+const Mainbutton = styled.div(
+  css`
+    font-size: smaller;
+  `,
+  tw`
+    md:text-lg
+  `,
+);
 
 function Intro() {
-  const Intromessage = {
-    fontSize: 'xx-large',
-    fontWeight: 'bold',
-    marginTop: '18%',
-    marginBottom: '5%',
-    textAlign: 'center',
-  };
   const subBtn = {
     display: 'flex',
     marginTop: '5%',
@@ -59,48 +125,39 @@ function Intro() {
     textAlign: 'right',
     marginRight: '5%',
     marginTop: '7px',
-    textDecoration: 'none',
   };
   const login = {
     flex: '1',
   };
 
-  const loginbtn = {
-    width: '13%',
-    height: '35px',
-    border: 'none',
-    borderRadius: '15px',
-    cursor: 'pointer',
-    backgroundColor: '#06FFD2',
-    outline: 'none',
-  };
   return (
     <>
       <IntroPage>
         <div className="IntroWrapper">
-          <div className="mainTitle" style={Intromessage}>
+          <Intromessage>
             현명한 소비자를 위한
             <br />
             여행자들의 똑똑한 쇼핑 공간
-          </div>
-          <div className="subTitle" style={{ textAlign: 'center' }}>
+          </Intromessage>
+          <Submessage>
             2021년부터 <strong>쫌,싸</strong> 와 함께 기획전을 둘러보고 남들보다
             싸게 구매하고 자랑하자!
-          </div>
+          </Submessage>
           <div className="subBtn" style={subBtn}>
             <div className="home" style={home}>
               <Link
-                to="/main"
-                style={{ color: 'inherit', textDecoration: 'inherit' }}
+                to="/"
+                style={{
+                  color: 'inherit',
+                  textDecoration: 'inherit',
+                }}
               >
-                둘러보기
+                <Mainbutton> 둘러보기</Mainbutton>
               </Link>
             </div>
             <div style={login}>
               <Link to="/modal">
-                <button type="button" style={loginbtn}>
-                  로그인
-                </button>
+                <LoginButton>로그인</LoginButton>
               </Link>
             </div>
           </div>

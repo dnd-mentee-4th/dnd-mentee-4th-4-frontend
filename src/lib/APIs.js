@@ -22,7 +22,6 @@ const getCategory = async () => {
   }
 };
 
-
 const brandTemp = [
   {
     id: 1,
