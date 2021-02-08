@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import React, { useState, useEffect, createContext } from 'react';
 
 import { ThemeProvider } from 'styled-components';

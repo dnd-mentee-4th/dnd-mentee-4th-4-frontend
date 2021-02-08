@@ -6,7 +6,7 @@ const GlobalStyles = createGlobalStyle`
   body {
     @import url('https://fonts.googleapis.com/earlyaccess/notosanskr.css');
     margin : 0;
-    background: ${({ theme }) => theme.body} !important;
+    background: ${({ theme }) => theme.background} !important;
     color: ${({ theme }) => theme.text} !important;
     border-color: ${({ theme }) => theme.vertical_border} !important;
     font-family: 'Lato', 'Noto Sans KR', sans-serif;
