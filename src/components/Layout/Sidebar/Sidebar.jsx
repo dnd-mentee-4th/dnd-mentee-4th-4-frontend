@@ -1,20 +1,13 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable no-console */
-
 import React, { useContext } from 'react';
 import styled, { css } from 'styled-components';
 import { Collapse } from 'antd';
 import tw from 'twin.macro';
 
-import { CATEGORY, SUB_CATEGORY } from '../../../constants/sideBarItem';
+import MenuContext from '../../../context/MenuContext';
 
 const { Panel } = Collapse;
 
-const SidebarWrapper = styled.div(
-  tw``,
-  css`
-  `,
-);
+const SidebarWrapper = styled.div(tw``, css``);
 
 const SidebarContainer = styled.div(
   tw`hidden md:(h-screen block w-1/4 pt-10 z-10 border-solid border-r float-left)`,
@@ -71,20 +64,37 @@ const StyledPanelContent = styled.p(
   `,
 );
 
-const Sidebar = () => (
-  <SidebarWrapper>
-    <SidebarContainer>
-      <Collapse defaultActiveKey={['HOME']} ghost accordion>
-        {CATEGORY.map((catogory) => (
-          <StyledPanelHeader header={catogory} key={catogory} showArrow={false}>
-            {SUB_CATEGORY[catogory].map((sub) => (
-              <StyledPanelContent key={sub}>{sub}</StyledPanelContent>
-            ))}
-          </StyledPanelHeader>
-        ))}
-      </Collapse>
-    </SidebarContainer>
-  </SidebarWrapper>
-);
+const Sidebar = () => {
+  const { categories, menu } = useContext(MenuContext);
+  return (
+    <SidebarWrapper>
+      <SidebarContainer>
+        {categories && menu && (
+          <Collapse ghost accordion>
+            {Object.entries(categories).map((categoryArr) => {
+              const category = categoryArr[1];
+              const categotyName = category.name;
+              const categotyId = category.id;
+              return (
+                <StyledPanelHeader
+                  header={categotyName}
+                  key={categotyId}
+                  showArrow={false}
+                >
+                  {menu[categotyName] &&
+                    menu[categotyName].map((brand) => (
+                      <StyledPanelContent key={brand.id}>
+                        {brand.name}
+                      </StyledPanelContent>
+                    ))}
+                </StyledPanelHeader>
+              );
+            })}
+          </Collapse>
+        )}
+      </SidebarContainer>
+    </SidebarWrapper>
+  );
+};
 
 export default Sidebar;

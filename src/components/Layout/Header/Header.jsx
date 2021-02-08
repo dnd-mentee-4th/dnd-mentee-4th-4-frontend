@@ -4,7 +4,7 @@ import tw from 'twin.macro';
 
 import ColorContext from '../../../context/ColorContext';
 
-import { Logo, HeaderTools } from '../../../constants/headerItem';
+import { Logo, HeaderTools, Moon, Sun } from '../../../constants/headerItem';
 import MobileToggle from './MobileToggle';
 
 const HeaderWrapper = styled.div(tw`block fixed w-full z-50`);
@@ -59,9 +59,11 @@ const Header = () => {
               );
             return <ToolImageContainer key={key} src={value} />;
           })}
-          <button type="button" onClick={temp}>
-            Click
-          </button>
+          {theme === 'light' ? (
+            <ToolImageContainer src={Moon} onClick={temp} />
+          ) : (
+            <ToolImageContainer src={Sun} onClick={temp} />
+          )}
         </ToolBar>
       </HeaderContainer>
     </HeaderWrapper>
