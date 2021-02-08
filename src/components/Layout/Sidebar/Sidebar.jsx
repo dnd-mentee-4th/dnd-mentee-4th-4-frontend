@@ -10,17 +10,25 @@ import { CATEGORY, SUB_CATEGORY } from '../../../constants/sideBarItem';
 
 const { Panel } = Collapse;
 const SidebarContainer = styled.div(
-  tw`w-1/4 h-screen pt-10 z-10 border-solid border-r float-left`,
-  css`border-color: ${(props) => props.theme.vertical_border};`
+  tw`hidden md:(block w-1/4 h-screen pt-10 z-10 border-solid border-r float-left)`,
+  css`
+    border-color: ${(props) => props.theme.vertical_border};
+  `,
 );
 
 const StyledPanelHeader = styled(Panel)(
   tw`font-bold clickable py-2`,
   css`
-    font-size: 28px;
     .ant-collapse-header {
       width: 1px;
-      margin: 0 auto;
+      font-size: 28px;
+      @media (min-width: 1280px) {
+        margin: 0 auto;
+      }
+      @media (min-width: 824px) and (max-width: 1279px) {
+        margin: 0 4rem;
+      }
+      margin: 0 1rem;
       outline: none;
       &:hover {
         color: ${(props) => props.theme.hover_text};
@@ -28,7 +36,13 @@ const StyledPanelHeader = styled(Panel)(
     }
     .ant-collapse-content {
       width: 1px;
-      margin: 0 auto;
+      @media (min-width: 1280px) {
+        margin: 0 auto;        
+      }
+      @media (min-width: 824px) and (max-width: 1279px) {
+        margin: 0 4rem;
+      }
+      margin: 0 1rem;
     }
     .ant-motion-collapse {
       transition: height 0.3s ease;
