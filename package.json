@@ -3,9 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "antd": "^4.12.0",
+    "autoprefixer": "^10.2.3",
+    "axios": "^0.21.1",
     "@tailwindcss/postcss7-compat": "^2.0.2",
-    "antd": "^4.12.2",
-    "autoprefixer": "^9.8.6",
     "eslint-config": "^0.3.0",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-config-prettier": "^7.1.0",
@@ -45,7 +46,8 @@
       "react/no-array-index-key": 0,
       "global-require": 0,
       "react/prop-types": 0,
-      "react/no-children-prop": 0
+      "react/no-children-prop": 0,
+      "no-underscore-dangle": 0
     },
     "env": {
       "browser": true
