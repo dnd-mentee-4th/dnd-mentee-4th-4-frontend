@@ -35,6 +35,8 @@ const MobileHeaderContainer = styled.div(
 );
 
 const MobileLogoContainer = styled.img(tw`items-center clickable w-8 h-8`);
+const ToggleImageContainer = styled.img(tw`items-center clickable w-5 h-5`);
+
 const MobileCloseContainer = styled(ImageContainer)(tw`items-center`);
 
 const MobileToggle = () => {
@@ -46,7 +48,7 @@ const MobileToggle = () => {
   return (
     <>
       <MobileToggleContainer>
-        <ImageContainer
+        <ToggleImageContainer
           src={iconToggle}
           onClick={() => {
             openMenu();
