@@ -1,5 +1,6 @@
 import React, { useState, useContext } from 'react';
 import { Collapse } from 'antd';
+import { SettingOutlined } from '@ant-design/icons';
 
 import { iconToggle, Logo, iconX } from '../../../constants/headerItem';
 import MenuContext from '../../../context/MenuContext';
@@ -39,6 +40,15 @@ const MobileToggle = () => {
   const openMenu = () => setOpen(true);
   const closeMenu = () => setOpen(false);
 
+  const genExtra = () => (
+    <SettingOutlined
+      onClick={(event) => {
+        // If you don't want click extra trigger collapse, you can prevent this:
+        event.stopPropagation();
+      }}
+    />
+  );
+
   return (
     <>
       <MobileToggleContainer>
@@ -70,6 +80,7 @@ const MobileToggle = () => {
             <MobileHR />
             <Collapse
               accordion
+              expandIconPosition="right"
               onChange={(eventId) =>
                 setSelectedCategory(Number.parseInt(eventId, 10))}
             >
@@ -82,7 +93,7 @@ const MobileToggle = () => {
                     header={categotyName}
                     key={categotyId}
                     selected={selectedCategory === categotyId}
-                    showArrow={false}
+                    extra={genExtra()}
                   >
                     {menu[categotyName] &&
                       menu[categotyName].map((brand) => (
