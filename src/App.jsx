@@ -1,14 +1,12 @@
 import React from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
 
 import { GlobalStyles } from './style';
 
 import { ColorProvider } from './context/ColorContext';
 import { MenuProvider } from './context/MenuContext';
 
-import Intro from './components/Intro';
-import Base from './components/Layout';
-import LoginModal from './components/LoginModal';
+import Routes from './Routes';
 
 const AppProvider = ({ contexts, children }) =>
   contexts.reduce(
@@ -23,11 +21,7 @@ const App = () => (
   <AppProvider contexts={[ColorProvider, MenuProvider]}>
     <GlobalStyles />
     <BrowserRouter basename="/">
-      <Switch>
-        <Route path="/" component={Base} exact />
-        <Route path="/intro" component={Intro} exact />
-        <Route path="/modal" component={LoginModal} exact />
-      </Switch>
+      <Routes />
     </BrowserRouter>
   </AppProvider>
 );
