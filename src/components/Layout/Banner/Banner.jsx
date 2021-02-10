@@ -31,6 +31,7 @@ const BannerImage = styled.img(
     }
   `,
 );
+
 const Banner = () => (
   <BannerContainer>
     <Carousel autoPlay infiniteLoop stopOnHover showThumbs={false} showArrows={false}>

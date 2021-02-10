@@ -9,10 +9,16 @@ const categorynitialState = [{ id: 0, name: 'HOME' }];
 const MenuProvider = ({ children }) => {
   const [categories, setCategories] = useState(categorynitialState);
   const [menu, setMenu] = useState({});
+  const [selectedCategory, setSelectedCategory] = useState();
+  const [selectedBrand, setSelectedBrand] = useState();
 
   const value = {
     categories,
     menu,
+    selectedCategory,
+    setSelectedCategory,
+    selectedBrand,
+    setSelectedBrand,
   };
 
   useEffect(() => {
