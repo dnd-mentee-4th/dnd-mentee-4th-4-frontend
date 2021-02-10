@@ -5,6 +5,7 @@
   "dependencies": {
     "antd": "^4.12.0",
     "autoprefixer": "^10.2.3",
+    "axios": "^0.21.1",
     "eslint-config": "^0.3.0",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-config-prettier": "^7.1.0",
@@ -15,6 +16,7 @@
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-responsive-carousel": "^3.2.11",
+    "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.1",
     "reactstrap": "^8.9.0",
@@ -23,7 +25,7 @@
     "tailwindcss": "^2.0.2",
     "tailwindcss-gradients": "^3.0.0",
     "tailwindcss-pseudo-elements": "^1.5.1",
-    "twin.macro": "^2.0.8"
+    "twin.macro": "^2.2.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -43,7 +45,8 @@
       "react/no-array-index-key": 0,
       "global-require": 0,
       "react/prop-types": 0,
-      "react/no-children-prop": 0
+      "react/no-children-prop": 0,
+      "no-underscore-dangle": 0
     },
     "env": {
       "browser": true

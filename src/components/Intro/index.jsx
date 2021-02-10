@@ -1,7 +1,18 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import styled, { css } from 'styled-components';
 import tw from 'twin.macro';
+import { Link } from 'react-router-dom';
+// const CardLoop = keyframes`
+// from {
+//   transform: translate(0%);
+
+// }
+
+// to {
+
+//   transform: translate(-100%);
+// }
+// `;
 
 const CardWrapper = styled.div(
   tw`w-full`,
@@ -114,7 +125,6 @@ function Intro() {
     textAlign: 'right',
     marginRight: '5%',
     marginTop: '7px',
-    textDecoration: 'none',
   };
   const login = {
     flex: '1',
