@@ -1,5 +1,6 @@
 import React, { useState, useContext } from 'react';
 import { Collapse } from 'antd';
+import { DownOutlined } from '@ant-design/icons';
 
 import { iconToggle, Logo, iconX } from '../../../constants/headerItem';
 import MenuContext from '../../../context/MenuContext';
@@ -38,6 +39,7 @@ const MobileToggle = () => {
 
   const openMenu = () => setOpen(true);
   const closeMenu = () => setOpen(false);
+  const genExtra = () => <DownOutlined />;
 
   return (
     <>
@@ -70,6 +72,7 @@ const MobileToggle = () => {
             <MobileHR />
             <Collapse
               accordion
+              expandIconPosition="right"
               onChange={(eventId) =>
                 setSelectedCategory(Number.parseInt(eventId, 10))}
             >
@@ -81,8 +84,9 @@ const MobileToggle = () => {
                   <MobileStyledPanelHeader
                     header={categotyName}
                     key={categotyId}
-                    selected={selectedCategory === categotyId}
                     showArrow={false}
+                    selected={selectedCategory === categotyId}
+                    extra={genExtra()}
                   >
                     {menu[categotyName] &&
                       menu[categotyName].map((brand) => (
