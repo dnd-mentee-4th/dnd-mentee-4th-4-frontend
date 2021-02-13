@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react';
 import { Collapse } from 'antd';
-import { SettingOutlined } from '@ant-design/icons';
+import { DownOutlined } from '@ant-design/icons';
 
 import { iconToggle, Logo, iconX } from '../../../constants/headerItem';
 import MenuContext from '../../../context/MenuContext';
@@ -39,15 +39,7 @@ const MobileToggle = () => {
 
   const openMenu = () => setOpen(true);
   const closeMenu = () => setOpen(false);
-
-  const genExtra = () => (
-    <SettingOutlined
-      onClick={(event) => {
-        // If you don't want click extra trigger collapse, you can prevent this:
-        event.stopPropagation();
-      }}
-    />
-  );
+  const genExtra = () => <DownOutlined />;
 
   return (
     <>
@@ -92,6 +84,7 @@ const MobileToggle = () => {
                   <MobileStyledPanelHeader
                     header={categotyName}
                     key={categotyId}
+                    showArrow={false}
                     selected={selectedCategory === categotyId}
                     extra={genExtra()}
                   >

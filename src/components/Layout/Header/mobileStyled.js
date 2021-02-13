@@ -22,7 +22,7 @@ const MobileSidebarWrapper = styled.div(
 );
 
 const MobileSidebar = styled.div(
-  tw`h-full w-3/5 float-left z-20 md:(hidden)`,
+  tw`md:(hidden) h-full w-3/5 z-20 overflow-scroll`,
   css`
     background-color: ${(props) => props.theme.background};
   `,
@@ -49,7 +49,7 @@ const MobileHR = styled.hr(
 const MobileUserContainer = styled.div(
   tw`m-6`,
   css`
-    font-size: 18px;
+    font-size: 16px;
     color: ${(props) => props.theme.contrast_text};
   `,
 );
@@ -64,18 +64,18 @@ const MobileLogoutButton = styled(Button)(
 );
 
 const MobileStyledPanelHeader = styled(Panel)(
-  tw`font-bold clickable py-4 pl-4 border-solid border-b`,
+  tw`font-bold clickable py-4 pl-4 border-solid border-b-2`,
   css`
     border-color: ${(props) => props.theme.mobile_hr};
 
     .ant-collapse-header {
-      width: 1px;
+      display: flex;
       font-size: 20px;
       outline: none;
+      margin-left: 1rem;
+      margin-right: 1.5rem;
+      justify-content: space-between;
       color: ${(props) => props.selected && props.theme.contrast_text};
-    }
-    .ant-collapse-content {
-      width: 1px;
     }
     .ant-motion-collapse {
       transition: height 0.3s ease;
@@ -88,9 +88,9 @@ const MobileStyledPanelHeader = styled(Panel)(
 );
 
 const MobileStyledPanelContent = styled.p(
-  tw`font-semibold clickable py-3`,
+  tw`font-semibold clickable py-3 ml-6`,
   css`
-    font-size: 14px;
+    font-size: 16px;
     color: ${(props) => props.selected && props.theme.contrast_text};
   `,
 );

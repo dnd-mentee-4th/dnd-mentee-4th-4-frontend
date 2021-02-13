@@ -26,32 +26,32 @@ const brandTemp = [
   {
     id: 1,
     name: '쿠팡',
-    category: 'Commerce',
+    category: 'COMMERCE',
   },
   {
     id: 2,
     name: '티몬',
-    category: 'Commerce',
+    category: 'COMMERCE',
   },
   {
     id: 3,
     name: '위메프',
-    category: 'Commerce',
+    category: 'COMMERCE',
   },
   {
     id: 4,
     name: 'SSG',
-    category: 'Commerce',
+    category: 'COMMERCE',
   },
   {
     id: 5,
     name: '11번가',
-    category: 'Commerce',
+    category: 'COMMERCE',
   },
   {
     id: 6,
     name: 'G마켓',
-    category: 'Commerce',
+    category: 'COMMERCE',
   },
   {
     id: 7,
@@ -143,7 +143,7 @@ const brandTemp = [
 const categoryTemp = [
   {
     id: 1,
-    name: 'Commerce',
+    name: 'COMMERCE',
   },
   {
     id: 2,
