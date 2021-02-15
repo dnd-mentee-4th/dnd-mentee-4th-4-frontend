@@ -14,6 +14,10 @@ const GlobalStyles = createGlobalStyle`
     border-color: ${({ theme }) => theme.vertical_border} !important;
     font-family: 'Lato', sans-serif;
     transition: all 0.25s linear;
+    /* a {
+      color: ${({ theme }) => theme.text} !important;
+      text-decoration : none;
+    } */
   }
   `;
 

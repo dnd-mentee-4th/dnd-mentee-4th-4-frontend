@@ -8,7 +8,6 @@ import { Logo, HeaderTools, Moon, Sun } from '../../../constants/headerItem';
 import MobileToggle from './MobileToggle';
 
 const HeaderWrapper = styled.div(tw`block fixed w-full z-50`);
-
 const HeaderContainer = styled.div(
   tw`flex items-center text-white md:(justify-between) justify-end`,
   css`
@@ -41,12 +40,12 @@ const SearchBoxContainer = styled.div(
 const Header = () => {
   const { theme, setTheme } = useContext(ColorContext);
 
-  const temp = () => (theme === 'light' ? setTheme('dark') : setTheme('light'));
+  const handleTheme = () =>
+    theme === 'light' ? setTheme('dark') : setTheme('light');
 
   return (
     <HeaderWrapper>
       <MobileToggle />
-
       <HeaderContainer>
         <LogoContainer src={Logo} />
         <ToolBar>
@@ -60,9 +59,9 @@ const Header = () => {
             return <ToolImageContainer key={key} src={value} />;
           })}
           {theme === 'light' ? (
-            <ToolImageContainer src={Moon} onClick={temp} />
+            <ToolImageContainer src={Moon} onClick={handleTheme} />
           ) : (
-            <ToolImageContainer src={Sun} onClick={temp} />
+            <ToolImageContainer src={Sun} onClick={handleTheme} />
           )}
         </ToolBar>
       </HeaderContainer>

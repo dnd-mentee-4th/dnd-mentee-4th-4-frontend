@@ -19,7 +19,8 @@ import {
   MobileLogoutButton,
   MobileStyledPanelHeader,
   MobileStyledPanelContent,
-} from './mobileStyled';
+  StyledLink,
+} from './styled/mobile';
 
 const tempUserContent1 = '이진수님,';
 const tempUserContent2 = '쫌.싸에 오신 걸 환영합니다.';
@@ -92,10 +93,17 @@ const MobileToggle = () => {
                       menu[categotyName].map((brand) => (
                         <MobileStyledPanelContent
                           key={brand.id}
-                          onClick={() => setSelectedBrand(brand.id)}
-                          selected={selectedBrand === brand.id}
+                          onClick={() => {
+                            closeMenu();
+                            setSelectedBrand(brand.id);
+                          }}
                         >
-                          {brand.name}
+                          <StyledLink
+                            to={`/${brand.name}`}
+                            selected={selectedBrand === brand.id}
+                          >
+                            {brand.name}
+                          </StyledLink>
                         </MobileStyledPanelContent>
                       ))}
                   </MobileStyledPanelHeader>

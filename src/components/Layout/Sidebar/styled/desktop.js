@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components';
+import { Link } from 'react-router-dom';
 import tw from 'twin.macro';
 import { Collapse } from 'antd';
 
@@ -57,8 +58,20 @@ const StyledPanelContent = styled.p(
     &:hover {
       color: ${(props) => props.theme.contrast_text};
     }
-    color: ${(props) => props.selected && props.theme.contrast_text};
   `,
 );
 
-export { SidebarContainer, StyledPanelHeader, StyledPanelContent };
+const StyledLink = styled(Link)(
+  tw``,
+  css`
+    &:focus,
+    &:visited,
+    &:link,
+    &:active {
+      text-decoration: none;
+      color: ${(props) =>
+        props.selected ? props.theme.contrast_text : 'inherit'};
+    }
+  `,
+);
+export { SidebarContainer, StyledPanelHeader, StyledPanelContent, StyledLink };
