@@ -1,12 +1,12 @@
 import React, { useContext } from 'react';
 import { Collapse } from 'antd';
-
 import MenuContext from '../../../context/MenuContext';
 import {
   SidebarContainer,
   StyledPanelHeader,
   StyledPanelContent,
-} from './styled';
+  StyledLink,
+} from './styled/desktop';
 
 const Sidebar = () => {
   const {
@@ -43,9 +43,13 @@ const Sidebar = () => {
                     <StyledPanelContent
                       key={brand.id}
                       onClick={() => setSelectedBrand(brand.id)}
-                      selected={selectedBrand === brand.id}
                     >
-                      {brand.name}
+                      <StyledLink
+                        to={`/${brand.name}`}
+                        selected={selectedBrand === brand.id}
+                      >
+                        {brand.name}
+                      </StyledLink>
                     </StyledPanelContent>
                   ))}
               </StyledPanelHeader>

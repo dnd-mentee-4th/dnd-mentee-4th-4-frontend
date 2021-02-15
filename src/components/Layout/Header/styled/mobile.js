@@ -1,5 +1,6 @@
 import styled, { css } from 'styled-components';
 import tw from 'twin.macro';
+import { Link } from 'react-router-dom';
 import { Button, Collapse } from 'antd';
 
 const { Panel } = Collapse;
@@ -91,7 +92,20 @@ const MobileStyledPanelContent = styled.p(
   tw`font-semibold clickable py-3 ml-6`,
   css`
     font-size: 16px;
-    color: ${(props) => props.selected && props.theme.contrast_text};
+  `,
+);
+
+const StyledLink = styled(Link)(
+  tw``,
+  css`
+    &:focus,
+    &:visited,
+    &:link,
+    &:active {
+      text-decoration: none;
+      color: ${(props) =>
+        props.selected ? props.theme.contrast_text : 'inherit'};
+    }
   `,
 );
 
@@ -109,4 +123,5 @@ export {
   MobileLogoutButton,
   MobileStyledPanelHeader,
   MobileStyledPanelContent,
+  StyledLink,
 };

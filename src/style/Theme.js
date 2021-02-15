@@ -7,6 +7,8 @@ const lightTheme = {
   button_background: '#DADADA',
   button_text: '#FFFFFF',
   card_bg: '#FFFFFF',
+  mo_card_bg: '#FFFFFF',
+  mo_card_duration: '#9E9E9E',
   card_border: '#E2E2E2',
   white: '#FFFFFF'
 
@@ -20,6 +22,8 @@ const darkTheme = {
   button_background: '#5C5C5C',
   button_text: '#D9D9D9',
   card_bg: '#3D3D3D',
+  mo_card_bg: '#000000',
+  mo_card_duration: '#C8C8C8',
   card_border: '#303030',
   white: '#FFFFFF'
 };

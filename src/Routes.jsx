@@ -4,14 +4,14 @@ import { withRouter, Switch, Route } from 'react-router-dom';
 import Intro from './components/Intro';
 import Base from './components/Layout';
 import LoginModal from './components/LoginModal';
-import CardList from './components/CardList';
+import Contents from './components/Contents';
 
 const Routes = () => (
   <Switch>
-    <Route path="/intro" component={Intro} exact />
+    <Route path="/intro" component={Intro} />
     <Route path="/modal" component={LoginModal} />
     <Base>
-      <Route path="/:brand" component={CardList} exact />
+      <Route path="/:brand" component={Contents} />
     </Base>
   </Switch>
 );
