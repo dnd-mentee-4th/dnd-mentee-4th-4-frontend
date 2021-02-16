@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled, { css } from 'styled-components';
 import tw from 'twin.macro';
 import LoginTools from '../../constants/loginItem';
@@ -23,17 +23,15 @@ const ModalBackground = styled.div(
     z-20
     outline-none
     `,
-  css`
-    display: ${(props) => (props.display ? 'block' : 'none')};
-  `,
 );
 
 const ModalContent = styled.div(
   tw`
-  relative
+  absolute
   w-9/12
   h-72
-  mx-auto
+  top-0
+  
   bg-white
   z-30
   outline-none
@@ -42,20 +40,26 @@ const ModalContent = styled.div(
   font-bold
   font-sans	
   shadow-lg
-  mt-28
-
+ 
+ 
   sm:w-6/12
-  sm:mt-56
+  sm:mt-40
   lg:w-2/5
  
   md:h-72
 `,
 
   css`
+    right: 12%;
+    margin-top: 10rem;
+
+    @media (min-width: 768px) {
+      right: 25%;
+    }
     @media (min-width: 1024px) {
       height: 28rem;
+      right: 30%;
     }
-    display: ${(props) => (props.display ? 'block' : 'none')};
   `,
 );
 
@@ -90,17 +94,25 @@ const DeleteButton = styled.img(
 
 const KaKaoLoginButton = styled.img(
   css`
-    width: 10%;
-    height: 10%;
+    width: 30px;
+    height: 30px;
     padding: 5%;
+    @media (min-width: 1024px) {
+      width: 60px;
+      height: 60px;
+    }
   `,
 );
 
 const NonMeberButton = styled.img(
   css`
-    width: 8%;
-    height: 8%;
     padding: 6%;
+    width: 20px;
+    height: 20px;
+    @media (min-width: 1024px) {
+      width: 40px;
+      height: 40px;
+    }
   `,
 );
 const LoginWrapper = styled.div(
@@ -124,7 +136,7 @@ const Imagewrapper = styled.div(
 `,
   css`
     width: 80%;
-
+    height: 60px;
     display: flex;
     align-items: center;
     background-color: black;
@@ -134,6 +146,12 @@ const Imagewrapper = styled.div(
     border-radius: 10px;
     background-color: ${(props) => (props.color ? 'black' : '#f9e000')};
     color: ${(props) => (props.color ? 'white' : 'black')};
+    @media (min-width: 1024px) {
+      height: 120px;
+    }
+    @media (max-width: 400px) {
+      width: 90%;
+    }
   `,
 );
 
@@ -153,20 +171,12 @@ const Imagewrapper = styled.div(
 //       `};
 // `;
 
-function LoginModal() {
-  const [display, setdisplay] = useState(true);
-
-  const LoginModalHandler = () => {
-    setdisplay(!display);
-  };
-
+function LoginModal({ displayHandler }) {
   return (
     <>
-      <div>홈화면</div>
-
-      <ModalBackground display={display} onClick={LoginModalHandler} />
-      <ModalContent display={display}>
-        <DeleteButton onClick={LoginModalHandler} src={LoginTools.delete} />
+      <ModalBackground onClick={displayHandler} />
+      <ModalContent>
+        <DeleteButton onClick={displayHandler} src={LoginTools.delete} />
         <LoginText>로그인</LoginText>
         <LoginWrapper>
           <Imagewrapper>
