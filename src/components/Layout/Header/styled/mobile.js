@@ -30,14 +30,14 @@ const MobileSidebar = styled.div(
 );
 
 const MobileHeaderContainer = styled.div(
-  tw`flex items-center px-10 text-white justify-between md:(hidden)`,
+  tw`flex items-center px-6 text-white justify-between md:(hidden)`,
   css`
     background-color: #303030;
     height: 58px;
   `,
 );
 
-const MobileLogoContainer = styled.img(tw`items-center clickable w-8 h-8`);
+const MobileLogoContainer = styled.img(tw`items-center clickable w-7 h-7`);
 const MobileCloseContainer = styled(ImageContainer)(tw`items-center`);
 const MobileHR = styled.hr(
   tw`border-none mx-0 mb-2 mt-0 w-full`,
@@ -65,7 +65,7 @@ const MobileLogoutButton = styled(Button)(
 );
 
 const MobileStyledPanelHeader = styled(Panel)(
-  tw`font-bold clickable py-4 pl-4 border-solid border-b-2`,
+  tw`font-bold clickable py-4 pl-2 border-solid border-b-2`,
   css`
     border-color: ${(props) => props.theme.mobile_hr};
 
