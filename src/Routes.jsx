@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import React from 'react';
 import { withRouter, Switch, Route, Redirect } from 'react-router-dom';
 
@@ -13,7 +12,7 @@ const Routes = () => (
     <Route path="/intro" component={Intro} />
     <Route path="/modal" component={LoginModal} />
     <Base>
-      {/* <Redirect from="/" to="/ALL" /> */}
+      <Redirect from="/" to="/ALL" />
       <Route path="/:brand" component={Contents} exact />
       <Route path="/mobile/favorite" component={MobileFavoriteBar} exact />
     </Base>
