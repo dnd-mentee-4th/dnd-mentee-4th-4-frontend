@@ -1,10 +1,18 @@
 import React, { useContext } from 'react';
 import styled, { css } from 'styled-components';
 import tw from 'twin.macro';
+import { Link } from 'react-router-dom';
 
 import ColorContext from '../../../context/ColorContext';
+import MenuContext from '../../../context/MenuContext';
 
-import { Logo, HeaderTools, Moon, Sun } from '../../../constants/headerItem';
+import {
+  Logo,
+  DesktopHeaderTools,
+  MobileHeaderTools,
+  Moon,
+  Sun,
+} from '../../../constants/headerItem';
 import MobileToggle from './MobileToggle';
 
 const HeaderWrapper = styled.div(tw`block fixed w-full z-50`);
@@ -37,8 +45,18 @@ const SearchBoxContainer = styled.div(
   `,
 );
 
+const StyledLink = styled(Link)(tw`flex items-center`);
+
+const MobileToolbarContainer = styled.div(
+  tw`md:(hidden) flex items-center justify-end`,
+);
+const DeskTopToolbarContainer = styled.div(
+  tw`md:(flex items-center justify-end) hidden`,
+);
+
 const Header = () => {
   const { theme, setTheme } = useContext(ColorContext);
+  const { setSelectedCategory, setSelectedBrand } = useContext(MenuContext);
 
   const handleTheme = () =>
     theme === 'light' ? setTheme('dark') : setTheme('light');
@@ -47,17 +65,30 @@ const Header = () => {
     <HeaderWrapper>
       <MobileToggle />
       <HeaderContainer>
-        <LogoContainer src={Logo} />
+        <StyledLink to="/ALL">
+          <LogoContainer
+            src={Logo}
+            onClick={() => {
+              setSelectedCategory(0);
+              setSelectedBrand(0);
+            }}
+          />
+        </StyledLink>
         <ToolBar>
-          {Object.entries(HeaderTools).map(([key, value]) => {
-            if (key === 'Search')
-              return (
-                <SearchBoxContainer key={key}>
-                  <ToolImageContainer src={value} />
-                </SearchBoxContainer>
-              );
-            return <ToolImageContainer key={key} src={value} />;
-          })}
+          <DeskTopToolbarContainer>
+            <SearchBoxContainer key="Search">
+              <ToolImageContainer src={DesktopHeaderTools.Search} />
+            </SearchBoxContainer>
+            <ToolImageContainer key="MyPage" src={DesktopHeaderTools.MyPage} />
+          </DeskTopToolbarContainer>
+
+          <MobileToolbarContainer>
+            <ToolImageContainer key="Search" src={MobileHeaderTools.Search} />
+            <StyledLink to="/mobile/favorite">
+              <ToolImageContainer key="Heart" src={MobileHeaderTools.Heart} />
+            </StyledLink>
+          </MobileToolbarContainer>
+
           {theme === 'light' ? (
             <ToolImageContainer src={Moon} onClick={handleTheme} />
           ) : (
