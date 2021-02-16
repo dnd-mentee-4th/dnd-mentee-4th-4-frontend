@@ -62,7 +62,7 @@ const StyledPanelContent = styled.p(
 );
 
 const StyledLink = styled(Link)(
-  tw``,
+  tw`font-normal`,
   css`
     &:focus,
     &:visited,

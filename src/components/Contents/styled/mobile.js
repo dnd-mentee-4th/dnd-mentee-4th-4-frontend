@@ -12,7 +12,7 @@ const CustomCard = styled(Card)(
 );
 const CustomCardImg = styled(CardImg)(tw`w-full`, css``);
 const CustomCardBody = styled(CardBody)(
-  tw`w-full flex flex-row justify-between`,
+  tw`w-full flex flex-row justify-between -mt-1`,
   css`
     background-color: ${(props) => props.theme.card_bg};
   `,
