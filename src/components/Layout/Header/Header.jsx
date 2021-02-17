@@ -57,11 +57,11 @@ const DeskTopToolbarContainer = styled.div(
 );
 
 const Header = () => {
-  const [display, setdisplay] = useState(false);
+  const [display, setDisplay] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
 
   const LoginModalHandler = () => {
-    setdisplay(!display);
+    setDisplay(!display);
   };
 
   const { theme, setTheme } = useContext(ColorContext);

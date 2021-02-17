@@ -3,6 +3,7 @@ import styled, { css } from 'styled-components';
 import tw from 'twin.macro';
 import { Link } from 'react-router-dom';
 import LoginModal from '../LoginModal';
+import LoginTools from '../../constants/loginItem';
 // const CardLoop = keyframes`
 // from {
 //   transform: translate(0%);
@@ -49,15 +50,38 @@ const IntroPage = styled.div(
     position: fixed;
     background-color: rgba(0, 0, 0, 0.7);
     z-index: 5;
-
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     color: white;
+  `,
+);
+
+const IntroLogo = styled.img(
+  css`
+    width: 25px;
+    height: 25px;
+
+    @media (min-width: 320px) {
+      width: 30px;
+      height: 30px;
+    }
+    @media (min-width: 768px) {
+      width: 40px;
+      height: 40px;
+    }
+    @media (min-width: 1024px) {
+      width: 60px;
+      height: 60px;
+    }
   `,
 );
 const Intromessage = styled.div(
   css`
     font-size: large;
     font-weight: bold;
-    margin-top: 50%;
+    margin-top: 5%;
     margin-bottom: 5%;
     text-align: center;
     line-height: 150%;
@@ -65,8 +89,8 @@ const Intromessage = styled.div(
   tw`
   sm:text-3xl
   
-  md:mt-80
-  lg:mt-48
+  md:mt-12
+  lg:mt-12
   lg:text-5xl
   lg:leading-normal
   
@@ -117,10 +141,10 @@ const Mainbutton = styled.div(
 );
 
 function Intro() {
-  const [display, setdisplay] = useState(false);
+  const [display, setDisplay] = useState(false);
 
   const LoginModalHandler = () => {
-    setdisplay(!display);
+    setDisplay(!display);
   };
   const subBtn = {
     display: 'flex',
@@ -139,6 +163,7 @@ function Intro() {
   return (
     <>
       <IntroPage>
+        <IntroLogo src={LoginTools.logo} />
         <div className="IntroWrapper">
           <Intromessage>
             현명한 소비자를 위한

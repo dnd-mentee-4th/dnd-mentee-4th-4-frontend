@@ -28,15 +28,15 @@ const ModalBackground = styled.div(
 const ModalContent = styled.div(
   tw`
   absolute
-  w-9/12
-  h-72
+  w-8/12
+  h-56
   top-0
   
   bg-white
   z-30
   outline-none
-  rounded-2xl
-  text-2xl
+  rounded-md
+  text-xl
   font-bold
   font-sans	
   shadow-lg
@@ -44,21 +44,21 @@ const ModalContent = styled.div(
  
   sm:w-6/12
   sm:mt-40
-  lg:w-2/5
+  lg:w-2/6
  
   md:h-72
 `,
 
   css`
-    right: 12%;
+    right: 15%;
     margin-top: 10rem;
 
     @media (min-width: 768px) {
       right: 25%;
     }
     @media (min-width: 1024px) {
-      height: 28rem;
-      right: 30%;
+      height: 20rem;
+      right: 35%;
     }
   `,
 );
@@ -66,9 +66,12 @@ const ModalContent = styled.div(
 const LoginText = styled.div(
   css`
     text-align: center;
-    padding-top: 5%;
+
     color: black;
     font-size: medium;
+    @media (min-width: 768) {
+      padding-top: 5%;
+    }
   `,
   tw`
   sm:text-2xl
@@ -96,58 +99,63 @@ const KaKaoLoginButton = styled.img(
   css`
     width: 30px;
     height: 30px;
-    padding: 5%;
+    padding: 0 2%;
+
     @media (min-width: 1024px) {
-      width: 60px;
-      height: 60px;
+      width: 50px;
+      height: 50px;
     }
   `,
 );
 
 const NonMeberButton = styled.img(
   css`
-    padding: 6%;
+    padding: 0 5%;
+
     width: 20px;
     height: 20px;
     @media (min-width: 1024px) {
-      width: 40px;
-      height: 40px;
+      width: 30px;
+      height: 30px;
     }
   `,
 );
 const LoginWrapper = styled.div(
   css`
-    margin-top: 40px;
+    margin-top: 0px;
     @media (min-width: 768px) {
       margin-top: 30px;
     }
     @media (min-width: 1024px) {
-      margin-top: 30px;
+      margin-top: 40px;
     }
   `,
 );
 const Imagewrapper = styled.div(
   tw`
   sm: my-32
-  md:text-lg
+  md:text-base
   
  
  
 `,
   css`
-    width: 80%;
-    height: 60px;
+    width: 82%;
+    height: 50px;
     display: flex;
+
     align-items: center;
+    justify-content: center;
     background-color: black;
     margin: 5% auto 5% auto;
+    text-align: center;
     cursor: pointer;
     font-size: x-small;
     border-radius: 10px;
     background-color: ${(props) => (props.color ? 'black' : '#f9e000')};
     color: ${(props) => (props.color ? 'white' : 'black')};
     @media (min-width: 1024px) {
-      height: 120px;
+      height: 60px;
     }
     @media (max-width: 400px) {
       width: 90%;
