@@ -6,6 +6,8 @@ import { Link } from 'react-router-dom';
 import ColorContext from '../../../context/ColorContext';
 import MenuContext from '../../../context/MenuContext';
 import LoginModal from '../../LoginModal';
+import Search from '../../Search';
+
 import {
   Logo,
   DesktopHeaderTools,
@@ -56,13 +58,16 @@ const DeskTopToolbarContainer = styled.div(
 
 const Header = () => {
   const [display, setDisplay] = useState(false);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
 
   const LoginModalHandler = () => {
     setDisplay(!display);
   };
+
   const { theme, setTheme } = useContext(ColorContext);
   const { setSelectedCategory, setSelectedBrand } = useContext(MenuContext);
 
+  const handleSearch = () => setIsSearchOpen(!isSearchOpen);
   const handleTheme = () =>
     theme === 'light' ? setTheme('dark') : setTheme('light');
 
@@ -82,7 +87,7 @@ const Header = () => {
           </StyledLink>
           <ToolBar>
             <DeskTopToolbarContainer>
-              <SearchBoxContainer key="Search">
+              <SearchBoxContainer key="Search" onClick={handleSearch}>
                 <ToolImageContainer src={DesktopHeaderTools.Search} />
               </SearchBoxContainer>
               <ToolImageContainer
@@ -93,7 +98,11 @@ const Header = () => {
             </DeskTopToolbarContainer>
 
             <MobileToolbarContainer>
-              <ToolImageContainer key="Search" src={MobileHeaderTools.Search} />
+              <ToolImageContainer
+                key="Search"
+                src={MobileHeaderTools.Search}
+                onClick={handleSearch}
+              />
               <StyledLink to="/mobile/favorite">
                 <ToolImageContainer key="Heart" src={MobileHeaderTools.Heart} />
               </StyledLink>
@@ -108,6 +117,7 @@ const Header = () => {
         </HeaderContainer>
       </HeaderWrapper>
       {display && <LoginModal displayHandler={LoginModalHandler} />}
+      {isSearchOpen && <Search handleSearch={handleSearch} />}
     </>
   );
 };
