@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled, { css } from 'styled-components';
 import tw from 'twin.macro';
 import { Link } from 'react-router-dom';
+import LoginModal from '../LoginModal';
 // const CardLoop = keyframes`
 // from {
 //   transform: translate(0%);
@@ -116,6 +117,11 @@ const Mainbutton = styled.div(
 );
 
 function Intro() {
+  const [display, setdisplay] = useState(false);
+
+  const LoginModalHandler = () => {
+    setdisplay(!display);
+  };
   const subBtn = {
     display: 'flex',
     marginTop: '5%',
@@ -156,9 +162,7 @@ function Intro() {
               </Link>
             </div>
             <div style={login}>
-              <Link to="/modal">
-                <LoginButton>로그인</LoginButton>
-              </Link>
+              <LoginButton onClick={LoginModalHandler}>로그인</LoginButton>
             </div>
           </div>
         </div>
@@ -178,6 +182,7 @@ function Intro() {
           <BackgroundCard>card</BackgroundCard>
         ))}
       </CardWrapper>
+      {display && <LoginModal displayHandler={LoginModalHandler} />}
     </>
   );
 }

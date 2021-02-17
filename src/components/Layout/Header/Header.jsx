@@ -1,11 +1,11 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import styled, { css } from 'styled-components';
 import tw from 'twin.macro';
 import { Link } from 'react-router-dom';
 
 import ColorContext from '../../../context/ColorContext';
 import MenuContext from '../../../context/MenuContext';
-
+import LoginModal from '../../LoginModal';
 import {
   Logo,
   DesktopHeaderTools,
@@ -55,6 +55,11 @@ const DeskTopToolbarContainer = styled.div(
 );
 
 const Header = () => {
+  const [display, setdisplay] = useState(false);
+
+  const LoginModalHandler = () => {
+    setdisplay(!display);
+  };
   const { theme, setTheme } = useContext(ColorContext);
   const { setSelectedCategory, setSelectedBrand } = useContext(MenuContext);
 
@@ -62,41 +67,48 @@ const Header = () => {
     theme === 'light' ? setTheme('dark') : setTheme('light');
 
   return (
-    <HeaderWrapper>
-      <MobileToggle />
-      <HeaderContainer>
-        <StyledLink to="/ALL">
-          <LogoContainer
-            src={Logo}
-            onClick={() => {
-              setSelectedCategory(0);
-              setSelectedBrand(0);
-            }}
-          />
-        </StyledLink>
-        <ToolBar>
-          <DeskTopToolbarContainer>
-            <SearchBoxContainer key="Search">
-              <ToolImageContainer src={DesktopHeaderTools.Search} />
-            </SearchBoxContainer>
-            <ToolImageContainer key="MyPage" src={DesktopHeaderTools.MyPage} />
-          </DeskTopToolbarContainer>
+    <>
+      <HeaderWrapper>
+        <MobileToggle />
+        <HeaderContainer>
+          <StyledLink to="/ALL">
+            <LogoContainer
+              src={Logo}
+              onClick={() => {
+                setSelectedCategory(0);
+                setSelectedBrand(0);
+              }}
+            />
+          </StyledLink>
+          <ToolBar>
+            <DeskTopToolbarContainer>
+              <SearchBoxContainer key="Search">
+                <ToolImageContainer src={DesktopHeaderTools.Search} />
+              </SearchBoxContainer>
+              <ToolImageContainer
+                key="MyPage"
+                src={DesktopHeaderTools.MyPage}
+                onClick={LoginModalHandler}
+              />
+            </DeskTopToolbarContainer>
 
-          <MobileToolbarContainer>
-            <ToolImageContainer key="Search" src={MobileHeaderTools.Search} />
-            <StyledLink to="/mobile/favorite">
-              <ToolImageContainer key="Heart" src={MobileHeaderTools.Heart} />
-            </StyledLink>
-          </MobileToolbarContainer>
+            <MobileToolbarContainer>
+              <ToolImageContainer key="Search" src={MobileHeaderTools.Search} />
+              <StyledLink to="/mobile/favorite">
+                <ToolImageContainer key="Heart" src={MobileHeaderTools.Heart} />
+              </StyledLink>
+            </MobileToolbarContainer>
 
-          {theme === 'light' ? (
-            <ToolImageContainer src={Moon} onClick={handleTheme} />
-          ) : (
-            <ToolImageContainer src={Sun} onClick={handleTheme} />
-          )}
-        </ToolBar>
-      </HeaderContainer>
-    </HeaderWrapper>
+            {theme === 'light' ? (
+              <ToolImageContainer src={Moon} onClick={handleTheme} />
+            ) : (
+              <ToolImageContainer src={Sun} onClick={handleTheme} />
+            )}
+          </ToolBar>
+        </HeaderContainer>
+      </HeaderWrapper>
+      {display && <LoginModal displayHandler={LoginModalHandler} />}
+    </>
   );
 };
 
