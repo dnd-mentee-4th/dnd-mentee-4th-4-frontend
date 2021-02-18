@@ -21,7 +21,6 @@ export {
   DesktopHeaderTools,
   MobileHeaderTools,
   iconX,
-  iconSearch,
   iconToggle,
   Moon,
   Sun,
