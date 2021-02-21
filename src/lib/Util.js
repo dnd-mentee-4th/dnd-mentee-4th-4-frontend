@@ -2,7 +2,7 @@ const makeMenu = (categories, brands) => {
   let menu = {};
   categories.map((category) => {
     const brandArray = brands.filter(
-      (brand) => brand.category === category.name,
+      (brand) => brand.CategoryId === category.id,
     );
     menu = {
       ...menu,
@@ -12,7 +12,7 @@ const makeMenu = (categories, brands) => {
   });
   menu = {
     ...menu,
-    HOME: [{ id: 0, name: 'ALL', category: 'HOME' }],
+    HOME: [{ id: 0, name: 'ALL', category: 'HOME', CategoryId: 0 }],
   };
   return menu;
 };
