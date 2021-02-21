@@ -1,6 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styled, { css } from 'styled-components';
 import tw from 'twin.macro';
+
+import MenuContext from '../../context/MenuContext';
+import { getCategoryName } from '../../lib/Util';
 
 const ContentsHeaderContainer = styled.div(
   tw`mt-6 pl-6 md:(flow-root mt-10 pl-10 items-center)`,
@@ -32,11 +35,20 @@ const BrandHeader = styled.div(
 );
 const ContentsHeader = (props) => {
   const { selectedBrandInfo } = props;
+  const { categories } = useContext(MenuContext);
+  let selectedCategoryName;
+  if (selectedBrandInfo) {
+    selectedCategoryName = getCategoryName(
+      categories,
+      selectedBrandInfo.CategoryId,
+    );
+  }
+
   return (
     <ContentsHeaderContainer>
-      {selectedBrandInfo && (
+      {selectedBrandInfo && selectedCategoryName && (
         <>
-          <CategoryHeader>{selectedBrandInfo.category}</CategoryHeader>
+          <CategoryHeader>{selectedCategoryName.toUpperCase()}</CategoryHeader>
           <BrandHeader>{selectedBrandInfo.name}</BrandHeader>
         </>
       )}

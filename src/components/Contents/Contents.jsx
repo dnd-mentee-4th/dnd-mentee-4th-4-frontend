@@ -10,20 +10,27 @@ import MobileCardList from './MobileCardList';
 
 const Contents = () => {
   const { menu, selectedBrand } = useContext(MenuContext);
-  const selectedBrandInfo = getSelectedBrandInfo(menu, selectedBrand);
+  const selectedBrandInfo = getSelectedBrandInfo(
+    menu,
+    selectedBrand,
+  );
 
   return (
     <>
       {selectedBrandInfo && selectedBrandInfo.id === 0 ? (
         <>
           <Redirect to="/ALL" />
-          <ContentsHeader selectedBrandInfo={selectedBrandInfo} />
+          <ContentsHeader
+            selectedBrandInfo={selectedBrandInfo}
+          />
           <CardList />
           <MobileCardList />
         </>
       ) : (
         <>
-          <ContentsHeader selectedBrandInfo={selectedBrandInfo} />
+          <ContentsHeader
+            selectedBrandInfo={selectedBrandInfo}
+          />
           <CardList />
           <MobileCardList />
         </>

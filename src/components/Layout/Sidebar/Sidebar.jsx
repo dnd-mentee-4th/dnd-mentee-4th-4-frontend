@@ -33,7 +33,7 @@ const Sidebar = () => {
             const categotyId = category.id;
             return (
               <StyledPanelHeader
-                header={categotyName}
+                header={categotyName.toUpperCase()}
                 key={categotyId}
                 selected={selectedCategory === categotyId}
                 showArrow={false}
@@ -45,10 +45,10 @@ const Sidebar = () => {
                       onClick={() => setSelectedBrand(brand.id)}
                     >
                       <StyledLink
-                        to={`/${brand.name}`}
+                        to={`/${brand.name.toUpperCase()}`}
                         selected={selectedBrand === brand.id}
                       >
-                        {brand.name}
+                        {brand.name.toUpperCase()}
                       </StyledLink>
                     </StyledPanelContent>
                   ))}

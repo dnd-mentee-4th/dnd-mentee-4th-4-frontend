@@ -2,14 +2,6 @@ import React from 'react';
 import styled, { css } from 'styled-components';
 import tw from 'twin.macro';
 import LoginTools from '../../constants/loginItem';
-// const fadeIn = keyframes`
-//   from {
-//     opacity: 0
-//   }
-//   to {
-//     opacity: 1
-//   }
-// `;
 
 const ModalBackground = styled.div(
   tw` 
@@ -152,8 +144,9 @@ const Imagewrapper = styled.div(
     cursor: pointer;
     font-size: x-small;
     border-radius: 10px;
-    background-color: ${(props) => (props.color ? 'black' : '#f9e000')};
-    color: ${(props) => (props.color ? 'white' : 'black')};
+    background-color: ${(props) =>
+      props.color === 'true' ? 'black' : '#f9e000'};
+    color: ${(props) => (props.color === 'true' ? 'white' : 'black')};
     @media (min-width: 1024px) {
       height: 60px;
     }
@@ -162,22 +155,6 @@ const Imagewrapper = styled.div(
     }
   `,
 );
-
-// const Imagewrapper = styled.div`
-//
-//   background-color: ${(props) =>
-//     props.primary &&
-//     css`
-//     #f9e000
-//       ;
-//     `};
-//   color: ${(props) =>
-//     props.primary &&
-//     css`
-//       black;
-//         ;
-//       `};
-// `;
 
 function LoginModal({ displayHandler }) {
   return (
@@ -191,7 +168,7 @@ function LoginModal({ displayHandler }) {
             <KaKaoLoginButton src={LoginTools.kakao} />
             카카오 계정으로 로그인하기
           </Imagewrapper>
-          <Imagewrapper color>
+          <Imagewrapper color="true" onClick={displayHandler}>
             <NonMeberButton src={LoginTools.logo} />
             비회원으로 사이트 이용하기
           </Imagewrapper>

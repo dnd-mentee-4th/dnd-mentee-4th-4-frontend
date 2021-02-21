@@ -83,7 +83,7 @@ const MobileToggle = () => {
                 const categotyId = category.id;
                 return (
                   <MobileStyledPanelHeader
-                    header={categotyName}
+                    header={categotyName.toUpperCase()}
                     key={categotyId}
                     showArrow={false}
                     selected={selectedCategory === categotyId}
@@ -99,10 +99,10 @@ const MobileToggle = () => {
                           }}
                         >
                           <StyledLink
-                            to={`/${brand.name}`}
+                            to={`/${brand.name.toUpperCase()}`}
                             selected={selectedBrand === brand.id}
                           >
-                            {brand.name}
+                            {brand.name.toUpperCase()}
                           </StyledLink>
                         </MobileStyledPanelContent>
                       ))}
