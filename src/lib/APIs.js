@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const baseApiURL =
-  'http://ec2-3-35-125-213.ap-northeast-2.compute.amazonaws.com:8080/api';
+  'https://zzomsa.tk/api';
 
 const getBrand = async () => {
   try {
