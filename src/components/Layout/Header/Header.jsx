@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import React, { useContext, useState } from 'react';
 import styled, { css } from 'styled-components';
 import tw from 'twin.macro';

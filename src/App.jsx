@@ -5,6 +5,7 @@ import { GlobalStyles } from './style';
 
 import { ColorProvider } from './context/ColorContext';
 import { MenuProvider } from './context/MenuContext';
+import { LoginProvider } from './context/LoginContext';
 
 import Routes from './Routes';
 
@@ -18,7 +19,7 @@ const AppProvider = ({ contexts, children }) =>
   );
 
 const App = () => (
-  <AppProvider contexts={[ColorProvider, MenuProvider]}>
+  <AppProvider contexts={[ColorProvider, MenuProvider, LoginProvider]}>
     <GlobalStyles />
     <BrowserRouter basename="/">
       <Routes />
