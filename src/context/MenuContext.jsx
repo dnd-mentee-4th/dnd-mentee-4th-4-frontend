@@ -4,10 +4,10 @@ import { makeMenu } from '../lib/Util';
 
 const MenuContext = createContext();
 
-const categorynitialState = [{ id: 0, name: 'HOME' }];
+const categoryIntialState = [{ id: 0, name: 'HOME' }];
 
 const MenuProvider = ({ children }) => {
-  const [categories, setCategories] = useState(categorynitialState);
+  const [categories, setCategories] = useState(categoryIntialState);
   const [menu, setMenu] = useState({});
   const [selectedCategory, setSelectedCategory] = useState(0);
   const [selectedBrand, setSelectedBrand] = useState(0);
