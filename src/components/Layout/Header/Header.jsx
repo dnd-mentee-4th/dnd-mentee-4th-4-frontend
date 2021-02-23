@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import React, { useContext, useState } from 'react';
 import styled, { css } from 'styled-components';
 import tw from 'twin.macro';
@@ -74,7 +73,6 @@ const Header = () => {
   const handleTheme = () =>
     theme === 'light' ? setTheme('dark') : setTheme('light');
 
-  console.log(isLogged);
   return (
     <>
       <HeaderWrapper>

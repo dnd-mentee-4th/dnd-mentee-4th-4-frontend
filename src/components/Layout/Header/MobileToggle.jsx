@@ -76,7 +76,7 @@ const MobileToggle = (props) => {
             </MobileHeaderContainer>
             <MobileHR />
             <MobileUserContainer>
-              {isLogged ? (
+              {isLogged === true ? (
                 <>
                   <MobileUserContent>{profileNickName}님,</MobileUserContent>
                   <MobileUserContent>{IntroContent}</MobileUserContent>
