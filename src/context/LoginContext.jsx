@@ -1,6 +1,6 @@
 import React, { useState, useEffect, createContext } from 'react';
 
-const getLoginInfoFromStorage = localStorage.getItem('zzomssa_loggined');
+const getLoginInfoFromStorage = localStorage.getItem('zzomssa_loggined')==="true";
 const getProfileIdInfoFromStorage = localStorage.getItem('zzomssa_profile_id');
 const getProfileNickNameInfoFromStorage = localStorage.getItem(
   'zzomssa_profile_name',
