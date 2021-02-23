@@ -1,8 +1,6 @@
-/* eslint-disable no-console */
-import React, { useState, createContext } from 'react';
+import React, { useState, useEffect, createContext } from 'react';
 
 const getLoginInfoFromStorage = localStorage.getItem('zzomssa') === true;
-
 const getProfileInfoFromStorage = localStorage.getItem('zzomssa_profile');
 
 const loginInitialState = {
@@ -19,6 +17,11 @@ const LoginProvider = ({ children }) => {
   const [profile, setProfile] = useState(getProfileInfoFromStorage);
 
   const value = { isLogged, setIsLogged, profile, setProfile };
+
+  useEffect(() => {
+    localStorage.setItem('zzomssa', isLogged);
+    localStorage.setItem('zzomssa_profile', profile);
+  }, [isLogged, profile]);
 
   return (
     <LoginContext.Provider value={value}>{children}</LoginContext.Provider>

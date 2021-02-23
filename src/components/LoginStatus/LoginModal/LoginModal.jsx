@@ -1,8 +1,10 @@
 /* eslint-disable no-console */
-import React from 'react';
+import React, { useContext } from 'react';
 import styled, { css } from 'styled-components';
 import tw from 'twin.macro';
 import KaKaoLogin from 'react-kakao-login';
+
+import LoginContext from '../../../context/LoginContext';
 
 const KAKAO_TOKEN = '9030c74246944b49373d6baa1f446d7e';
 const LOGIN_TEXT = '로그인';
@@ -10,11 +12,11 @@ const KAKAO_BUTTON = '카카오 계정으로 로그인하기';
 const NONLOGIN_BUTTON = '비회원으로 사이트 이용하기';
 
 const ModalBackground = styled.div(
-  tw` fixed top-0 left-0 bottom-0 right-0 bg-black bg-opacity-50 z-20 outline-none`,
+  tw` fixed top-0 left-0 bottom-0 right-0 bg-black bg-opacity-50 z-50 outline-none`,
 );
 
 const ModalContent = styled.div(
-  tw` left-2/4 transform -translate-x-2/4 py-6 absolute bg-white z-30 outline-none rounded-md text-xl font-bold
+  tw` left-2/4 transform -translate-x-2/4 py-6 absolute bg-white z-100 outline-none rounded-md text-xl font-bold
   sm:mt-40 md:(px-6)`,
   css`
     margin-top: 10rem;
@@ -77,27 +79,37 @@ const KaKaoBtn = styled(KaKaoLogin)(
   `,
 );
 
-const LoginModal = ({ displayHandler }) => (
-  <>
-    <ModalBackground onClick={displayHandler} />
-    <ModalContent>
-      <LoginText>{LOGIN_TEXT}</LoginText>
-      <LoginWrapper>
-        <Imagewrapper>
-          <KaKaoBtn
-            token={KAKAO_TOKEN}
-            onSuccess={(res) => {
-              console.log(res);
-            }}
-          >
-            {KAKAO_BUTTON}
-          </KaKaoBtn>
-        </Imagewrapper>
-        <Imagewrapper color="true" onClick={displayHandler}>
-          {NONLOGIN_BUTTON}
-        </Imagewrapper>
-      </LoginWrapper>
-    </ModalContent>
-  </>
-);
+const LoginModal = (props) => {
+  const { displayHandler } = props;
+  const { setIsLogged, setProfile } = useContext(LoginContext);
+
+  return (
+    <>
+      <ModalBackground onClick={displayHandler} />
+      <ModalContent>
+        <LoginText>{LOGIN_TEXT}</LoginText>
+        <LoginWrapper>
+          <Imagewrapper>
+            <KaKaoBtn
+              token={KAKAO_TOKEN}
+              onSuccess={(res) => {
+                displayHandler();
+                setIsLogged(true);
+                setProfile({
+                  id: res.profile.id,
+                  nickName: res.profile.properties.nickname,
+                });
+              }}
+            >
+              {KAKAO_BUTTON}
+            </KaKaoBtn>
+          </Imagewrapper>
+          <Imagewrapper color="true" onClick={displayHandler}>
+            {NONLOGIN_BUTTON}
+          </Imagewrapper>
+        </LoginWrapper>
+      </ModalContent>
+    </>
+  );
+};
 export default LoginModal;

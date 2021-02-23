@@ -2,19 +2,8 @@ import React, { useState } from 'react';
 import styled, { css } from 'styled-components';
 import tw from 'twin.macro';
 import { Link } from 'react-router-dom';
-import LoginModal from '../LoginModal';
+import LoginModal from '../LoginStatus/LoginModal';
 import LoginTools from '../../constants/loginItem';
-// const CardLoop = keyframes`
-// from {
-//   transform: translate(0%);
-
-// }
-
-// to {
-
-//   transform: translate(-100%);
-// }
-// `;
 
 const CardWrapper = styled.div(
   tw`w-full`,

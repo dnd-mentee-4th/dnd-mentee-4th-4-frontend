@@ -56,7 +56,7 @@ const MobileUserContainer = styled.div(
 );
 const MobileUserContent = styled.p(tw`my-2`);
 const MobileLogoutButton = styled(Button)(
-  tw`mt-2 mb-4 border-none rounded-2xl float-right`,
+  tw`mt-2 mb-4 border-none rounded-2xl float-right outline-none clickable`,
   css`
     height: 25px;
     color: ${(props) => props.theme.button_text};
