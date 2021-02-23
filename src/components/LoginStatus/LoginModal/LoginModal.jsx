@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import React, { useContext } from 'react';
 import styled, { css } from 'styled-components';
 import tw from 'twin.macro';
@@ -81,7 +80,9 @@ const KaKaoBtn = styled(KaKaoLogin)(
 
 const LoginModal = (props) => {
   const { displayHandler } = props;
-  const { setIsLogged, setProfile } = useContext(LoginContext);
+  const { setIsLogged, setProfileNickName, setProfileId } = useContext(
+    LoginContext,
+  );
 
   return (
     <>
@@ -95,10 +96,8 @@ const LoginModal = (props) => {
               onSuccess={(res) => {
                 displayHandler();
                 setIsLogged(true);
-                setProfile({
-                  id: res.profile.id,
-                  nickName: res.profile.properties.nickname,
-                });
+                setProfileNickName(res.profile.properties.nickname);
+                setProfileId(res.profile.id);
               }}
             >
               {KAKAO_BUTTON}

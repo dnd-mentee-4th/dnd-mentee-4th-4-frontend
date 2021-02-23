@@ -46,8 +46,8 @@ const LoginWrapper = styled.div(
 const UserContent = styled.p(tw``,css``);
 
 const LoggedModal = (props) => {
-  const { profile, displayHandler } = props;
-  const { setIsLogged, setProfile } = useContext(LoginContext);
+  const { displayHandler } = props;
+  const { setIsLogged, profileNickName, setProfileNickName, setProfileId } = useContext(LoginContext);
 
   return (
     <>
@@ -55,14 +55,15 @@ const LoggedModal = (props) => {
       <ModalContent>
         <DeleteButton onClick={displayHandler} src={LoginTools.delete} />
         <LoginWrapper>
-          <UserContent>{profile.nickName}님,</UserContent>
+          <UserContent>{profileNickName}님,</UserContent>
           <UserContent>{IntroContent}</UserContent>
         </LoginWrapper>
         <LogoutButton
           onClick={() => {
-            setIsLogged(false);
-            setProfile();
             displayHandler();
+            setIsLogged(false);
+            setProfileNickName();
+            setProfileId();
           }}
         >
           {LogoutContent}

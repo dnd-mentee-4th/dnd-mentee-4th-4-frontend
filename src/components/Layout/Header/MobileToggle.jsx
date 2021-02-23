@@ -38,9 +38,13 @@ const MobileToggle = (props) => {
     selectedBrand,
     setSelectedBrand,
   } = useContext(MenuContext);
-  const { isLogged, setIsLogged, profile, setProfile } = useContext(
-    LoginContext,
-  );
+  const {
+    isLogged,
+    setIsLogged,
+    profileNickName,
+    setProfileNickName,
+    setProfileId,
+  } = useContext(LoginContext);
 
   const [open, setOpen] = useState(false);
 
@@ -74,12 +78,13 @@ const MobileToggle = (props) => {
             <MobileUserContainer>
               {isLogged ? (
                 <>
-                  <MobileUserContent>{profile.nickName}님,</MobileUserContent>
+                  <MobileUserContent>{profileNickName}님,</MobileUserContent>
                   <MobileUserContent>{IntroContent}</MobileUserContent>
                   <MobileLogoutButton
                     onClick={() => {
                       setIsLogged(false);
-                      setProfile();
+                      setProfileNickName();
+                      setProfileId();
                     }}
                   >
                     {LogoutContent}

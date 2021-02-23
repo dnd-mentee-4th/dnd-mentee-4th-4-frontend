@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import React, { useContext, useState } from 'react';
 import styled, { css } from 'styled-components';
 import tw from 'twin.macro';
@@ -62,18 +63,18 @@ const Header = () => {
   const [display, setDisplay] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
 
+  const { theme, setTheme } = useContext(ColorContext);
+  const { setSelectedCategory, setSelectedBrand } = useContext(MenuContext);
+  const { isLogged } = useContext(LoginContext);
+
   const hadleDisplay = () => {
     setDisplay(!display);
   };
-
-  const { theme, setTheme } = useContext(ColorContext);
-  const { setSelectedCategory, setSelectedBrand } = useContext(MenuContext);
-  const { isLogged, profile } = useContext(LoginContext);
-
   const handleSearch = () => setIsSearchOpen(!isSearchOpen);
   const handleTheme = () =>
     theme === 'light' ? setTheme('dark') : setTheme('light');
 
+  console.log(isLogged);
   return (
     <>
       <HeaderWrapper>
@@ -120,10 +121,10 @@ const Header = () => {
         </HeaderContainer>
       </HeaderWrapper>
       {display &&
-        (!isLogged ? (
-          <LoginModal displayHandler={hadleDisplay} />
+        (isLogged === true ? (
+          <LoggedModal displayHandler={hadleDisplay} />
         ) : (
-          <LoggedModal profile={profile} displayHandler={hadleDisplay} />
+          <LoginModal displayHandler={hadleDisplay} />
         ))}
       {isSearchOpen && <Search handleSearch={handleSearch} />}
     </>

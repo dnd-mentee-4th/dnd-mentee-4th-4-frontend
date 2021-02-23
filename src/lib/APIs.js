@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import axios from 'axios';
 
 const baseApiURL =
@@ -22,14 +21,13 @@ const getCategory = async () => {
   }
 };
 
-const getLoginInfo = async () => {
-  try {
-    const loginInfo = await axios.get(`${baseApiURL}/auth/kakao`);
-    console.log(loginInfo);
-    return loginInfo;
-  } catch (e) {
-    return null;
-  }
-}
+// const getLoginInfo = async () => {
+//   try {
+//     const loginInfo = await axios.get(`${baseApiURL}/auth/kakao`);
+//     return loginInfo;
+//   } catch (e) {
+//     return null;
+//   }
+// }
 
-export { getBrand, getCategory, getLoginInfo };
+export { getBrand, getCategory };
