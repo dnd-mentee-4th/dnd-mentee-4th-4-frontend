@@ -3,6 +3,7 @@ import styled, { css } from 'styled-components';
 import tw from 'twin.macro';
 import KaKaoLogin from 'react-kakao-login';
 
+import { postLoginInfo } from '../../../lib/APIs';
 import LoginContext from '../../../context/LoginContext';
 
 const KAKAO_TOKEN = '9030c74246944b49373d6baa1f446d7e';
@@ -93,11 +94,15 @@ const LoginModal = (props) => {
           <Imagewrapper>
             <KaKaoBtn
               token={KAKAO_TOKEN}
-              onSuccess={(res) => {
+              onSuccess={async (res) => {
                 displayHandler();
                 setIsLogged(true);
                 setProfileNickName(res.profile.properties.nickname);
                 setProfileId(res.profile.id);
+                await postLoginInfo(
+                  res.profile.id,
+                  res.profile.properties.nickname,
+                );
               }}
             >
               {KAKAO_BUTTON}

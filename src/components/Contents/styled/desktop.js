@@ -1,5 +1,6 @@
 import styled, { css } from 'styled-components';
 import { Card, CardImg, CardBody } from 'reactstrap';
+
 import tw from 'twin.macro';
 
 const CardListContainer = styled.div(
@@ -11,7 +12,7 @@ const CustomCard = styled(Card)(
     border-color: ${(props) => props.theme.card_border};
   `,
 );
-const CustomCardImg = styled(CardImg)(tw`w-3/5`, css``);
+const CustomCardImg = styled(CardImg)(tw`w-3/5 clickable`, css``);
 const CustomCardBody = styled(CardBody)(
   tw`w-2/5`,
   css`
@@ -52,6 +53,20 @@ const CardBrandInfo = styled.div(
     color: ${(props) => props.theme.white};
   `,
 );
+
+// const StyledLink = styled(Link)(
+//   tw``,
+//   css`
+//     &:focus,
+//     &:visited,
+//     &:link,
+//     &:active {
+//       text-decoration: none;
+//       color: ${(props) =>
+//         props.selected ? props.theme.contrast_text : 'inherit'};
+//     }
+//   `,
+// );
 
 export {
   CardListContainer,

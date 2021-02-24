@@ -5,11 +5,7 @@ import tw from 'twin.macro';
 import 'react-responsive-carousel/lib/styles/carousel.min.css'; // requires a loader
 import { Carousel } from 'react-responsive-carousel';
 
-const tempImageSrc = [
-  'http://placehold.it/1280x320',
-  'http://placehold.it/1280x321',
-  'http://placehold.it/1280x322',
-];
+import BannerImages from '../../../constants/bannerItem';
 
 const BannerContainer = styled.div(
   css`
@@ -35,7 +31,7 @@ const BannerImage = styled.img(
 const Banner = () => (
   <BannerContainer>
     <Carousel autoPlay infiniteLoop stopOnHover showThumbs={false} showArrows={false}>
-      {tempImageSrc.map((imageSrc, index) => (
+      {BannerImages.map((imageSrc, index) => (
         <BannerImage key={index} src={imageSrc} />
       ))}
     </Carousel>

@@ -11,14 +11,17 @@ const MenuProvider = ({ children }) => {
   const [menu, setMenu] = useState({});
   const [selectedCategory, setSelectedCategory] = useState(0);
   const [selectedBrand, setSelectedBrand] = useState(0);
+  const [promotions, setPromotions] = useState();
 
   const value = {
     categories,
     menu,
+    promotions,
     selectedCategory,
     setSelectedCategory,
     selectedBrand,
     setSelectedBrand,
+    setPromotions
   };
 
   useEffect(() => {
@@ -33,6 +36,13 @@ const MenuProvider = ({ children }) => {
     getMenu();
   }, []);
 
+  useEffect(() => {
+    const getPromotions = async () => {
+      const _promotions = await API.getPromotions(selectedBrand);
+      setPromotions(_promotions);
+    };
+    getPromotions();
+  }, [selectedBrand]);
   return <MenuContext.Provider value={value}>{children}</MenuContext.Provider>;
 };
 
