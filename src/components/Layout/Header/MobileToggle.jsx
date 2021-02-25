@@ -4,6 +4,7 @@ import { DownOutlined } from '@ant-design/icons';
 
 import { iconToggle, Logo, iconX } from '../../../constants/headerItem';
 import MenuContext from '../../../context/MenuContext';
+import LoginContext from '../../../context/LoginContext';
 
 import {
   MobileSidebarWrapper,
@@ -22,11 +23,13 @@ import {
   StyledLink,
 } from './styled/mobile';
 
-const tempUserContent1 = '이진수님,';
-const tempUserContent2 = '쫌.싸에 오신 걸 환영합니다.';
+const NonUserContent = '비회원님,';
+const IntroContent = '쫌.싸에 오신 걸 환영합니다.';
 const LogoutContent = '로그아웃';
+const LoginContent = '로그인';
 
-const MobileToggle = () => {
+const MobileToggle = (props) => {
+  const { displayHandler } = props;
   const {
     categories,
     menu,
@@ -35,6 +38,13 @@ const MobileToggle = () => {
     selectedBrand,
     setSelectedBrand,
   } = useContext(MenuContext);
+  const {
+    isLogged,
+    setIsLogged,
+    profileNickName,
+    setProfileNickName,
+    setProfileId,
+  } = useContext(LoginContext);
 
   const [open, setOpen] = useState(false);
 
@@ -66,9 +76,29 @@ const MobileToggle = () => {
             </MobileHeaderContainer>
             <MobileHR />
             <MobileUserContainer>
-              <MobileUserContent>{tempUserContent1}</MobileUserContent>
-              <MobileUserContent>{tempUserContent2}</MobileUserContent>
-              <MobileLogoutButton>{LogoutContent}</MobileLogoutButton>
+              {isLogged === true ? (
+                <>
+                  <MobileUserContent>{profileNickName}님,</MobileUserContent>
+                  <MobileUserContent>{IntroContent}</MobileUserContent>
+                  <MobileLogoutButton
+                    onClick={() => {
+                      setIsLogged(false);
+                      setProfileNickName();
+                      setProfileId();
+                    }}
+                  >
+                    {LogoutContent}
+                  </MobileLogoutButton>
+                </>
+              ) : (
+                <>
+                  <MobileUserContent>{NonUserContent}</MobileUserContent>
+                  <MobileUserContent>{IntroContent}</MobileUserContent>
+                  <MobileLogoutButton onClick={displayHandler}>
+                    {LoginContent}
+                  </MobileLogoutButton>
+                </>
+              )}
             </MobileUserContainer>
             <MobileHR />
             <Collapse

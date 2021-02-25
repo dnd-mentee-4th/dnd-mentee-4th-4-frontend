@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import React, { useContext, useState } from 'react';
 import styled, { css } from 'styled-components';
 import tw from 'twin.macro';
@@ -6,7 +5,9 @@ import { Link } from 'react-router-dom';
 
 import ColorContext from '../../../context/ColorContext';
 import MenuContext from '../../../context/MenuContext';
-import LoginModal from '../../LoginModal';
+import LoginContext from '../../../context/LoginContext';
+
+import { LoginModal, LoggedModal } from '../../LoginStatus';
 import Search from '../../Search';
 
 import {
@@ -61,13 +62,13 @@ const Header = () => {
   const [display, setDisplay] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
 
-  const LoginModalHandler = () => {
-    setDisplay(!display);
-  };
-
   const { theme, setTheme } = useContext(ColorContext);
   const { setSelectedCategory, setSelectedBrand } = useContext(MenuContext);
+  const { isLogged } = useContext(LoginContext);
 
+  const hadleDisplay = () => {
+    setDisplay(!display);
+  };
   const handleSearch = () => setIsSearchOpen(!isSearchOpen);
   const handleTheme = () =>
     theme === 'light' ? setTheme('dark') : setTheme('light');
@@ -75,7 +76,7 @@ const Header = () => {
   return (
     <>
       <HeaderWrapper>
-        <MobileToggle />
+        <MobileToggle displayHandler={hadleDisplay} />
         <HeaderContainer>
           <StyledLink to="/ALL">
             <LogoContainer
@@ -94,7 +95,7 @@ const Header = () => {
               <ToolImageContainer
                 key="MyPage"
                 src={DesktopHeaderTools.MyPage}
-                onClick={LoginModalHandler}
+                onClick={hadleDisplay}
               />
             </DeskTopToolbarContainer>
 
@@ -117,7 +118,12 @@ const Header = () => {
           </ToolBar>
         </HeaderContainer>
       </HeaderWrapper>
-      {display && <LoginModal displayHandler={LoginModalHandler} />}
+      {display &&
+        (isLogged === true ? (
+          <LoggedModal displayHandler={hadleDisplay} />
+        ) : (
+          <LoginModal displayHandler={hadleDisplay} />
+        ))}
       {isSearchOpen && <Search handleSearch={handleSearch} />}
     </>
   );
